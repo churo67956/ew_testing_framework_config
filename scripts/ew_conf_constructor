@@ -27,7 +27,7 @@ EW_CONF_CONSTRUCTOR_ACCIONES=(
     "ln -s -f"
 );
 
-function ew_conf_constructar_arrancar() {
+function ew_conf_constructor_arrancar() {
     #paramos los servicios
     lava_parar;
     #copia de seguridad
@@ -67,8 +67,7 @@ function ew_conf_constructar_arrancar() {
     #arranca los servicios
     lava_arrancar;
 }
-export -f ew_conf_constructar_arrancar;
 
-
+ew_conf_constructor_arrancar;
 
 

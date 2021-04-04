@@ -20,12 +20,5 @@ else
     . ~/.ew_conf_orquestador_servicios
 fi
 
-#habitamos el orquestador de servicios de lava
-if [ -f ~/.ew_conf_constructor ]; then
-    . ~/.ew_conf_constructor
-else
-    ln -s -f $EW_CONF_SCRIPTS/ew_conf_constructor ~/.ew_conf_constructor
-    . ~/.ew_conf_constructor
-fi
 
 

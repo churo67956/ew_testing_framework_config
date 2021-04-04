@@ -1,1 +1,32 @@
 * Configuración EW Testing Framework
+La configuracion de mi proyecto por comodidad esta en un repositorio independiente del pricipal.
+Van a existir 3 tipos de instalación que coinciden con 3 ramas:
+- main : instalación del maestro
+- esclavo : instalación del esclavo
+- por_defecto : instalación por defecto tanto del maestro como del exclavo
+** Instalaciones 
+Todas las instalaciones parte de la siguiente premisa :
+Haber instalado LAVA siguiendo las instrucciones de oficiales. Las instrucciones oficiales se pueden
+consultar en la https://lkft.validation.linaro.org/static/docs/v2/pipeline-server.html. Tengo
+otro repositorio donde detallo con mis palabras las diferentes estrategias de instalación que he
+provado. El repositorio es **AGREGAR REPO URL**. 
+
+*** TODO Instalación por defecto
+La rama por_defecto contiene la configuración de una instancia de LAVA con el maestro y esclavo en un mismo host.
+La configuración esta compuesta por los ficheros :
+- lava-worker
+- lava-server-gunicorn
+- lava-scheduler
+- lava-publisher
+- lava-server.conf
+
+
+** Scripts
+Tenemos unos scripts que nos van construir el layout del repositorio a partir de la instalación por defecto de LAVA,
+es decir todos los componentes en una misma máquina.
+Adicionalmente se definen unas variables y funciones de ambiente para tener un acceso directo a los fichero de configuración
+y a la gestion de los servicios : parar y arrancar.
+*** TODO Listado de variables 
+*** TODO Listado de funciones
+
+
