@@ -1,25 +1,38 @@
-* Configuración EW Testing Framework
-La configuracion de mi proyecto por comodidad esta en un repositorio independiente del pricipal.
-Van a existir 3 tipos de instalación que coinciden con 3 ramas:
-- main : instalación del maestro
-- esclavo : instalación del esclavo
-- por_defecto : instalación por defecto tanto del maestro como del exclavo
+* Instalación EW Testing Framework
+
+Repositorio con la información necesaria para puesta en marcha de LAVA. Pricipalmente se realiza el seguimiento
+sobre de los ficheros de configuración de LAVA.
+Cuando hablemos de artefactos se hace referencia a los ficheros anteriores.
+
+Buscamos poder replicar lava en otras máquinas de acuerdo a nuestras especificaciones. 
+
+A lo largo del proyecto, principalmente para familiarizarme con LAVA, he realizado dos tipos de instalación:
+- La instalación simplista, poco real y para nada aconsejable en producción. Instalar todo en una misma máquina.
+- La instalación actual, que ira evolucionado hasta convertise en una final y estable. Un maestro y uno o varios esclavos.
+
 ** Instalaciones 
-Todas las instalaciones parte de la siguiente premisa :
+
+Todas las instalaciones parte de la siguiente premisa : 
+
+#+BEGIN_SRC
 Haber instalado LAVA siguiendo las instrucciones de oficiales. Las instrucciones oficiales se pueden
-consultar en la https://lkft.validation.linaro.org/static/docs/v2/pipeline-server.html. Tengo
-otro repositorio donde detallo con mis palabras las diferentes estrategias de instalación que he
-provado. El repositorio es **AGREGAR REPO URL**. 
+consultar en la https://lkft.validation.linaro.org/static/docs/v2/pipeline-server.html. 
+#+END_SRC
 
-*** TODO Instalación por defecto
-La rama por_defecto contiene la configuración de una instancia de LAVA con el maestro y esclavo en un mismo host.
-La configuración esta compuesta por los ficheros :
-- lava-worker
-- lava-server-gunicorn
-- lava-scheduler
-- lava-publisher
-- lava-server.conf
+La documentación oficial esta muy bien detallada.
 
+
+*** Simplista
+
+La rama por_defecto contiene los artefactos de una instancia de LAVA. El maestro y esclavo en un mismo host.
+El nombre del host, como de costumbre, es localhost y su dirección 127.0.0.1.
+
+Los artefactos son 
+- lava-worker o fichero de configuración del esclavo.
+- lava-server-gunicorn o fichero de configuración del backend.
+- lava-scheduler o fichero de configuración del planificador.
+- lava-publisher o fichero de configuración del publicador de eventos.
+- lava-server.conf o fichero de configuracion de proxy-reverse apache.
 
 ** Scripts
 Tenemos unos scripts que nos van construir el layout del repositorio a partir de la instalación por defecto de LAVA,
