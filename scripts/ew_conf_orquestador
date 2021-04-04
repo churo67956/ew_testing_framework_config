@@ -1,0 +1,31 @@
+#
+# LAVA : VARIABLES DE AMBIENTE 
+#
+
+#instalación local 
+export LAVA_LOCAL=true
+export LAVA_MASTER=true
+
+if [ -f ~/.ew_conf_env_variables ]; then
+    . ~/.ew_conf_env_variables
+else
+    ln -s -f $EW_CONF/scripts/ew_conf_env_variables  ~/.ew_conf_env_variables
+    . ~/.ew_conf_env_variables
+fi
+#habitamos el orquestador de servicios de lava
+if [ -f ~/.ew_conf_orquestador_servicios ]; then
+    . ~/.ew_conf_orquestador_servicios
+else
+    ln -s -f $EW_CONF_SCRIPTS/ew_conf_orquestador_servicios ~/.ew_conf_orquestador_servicios
+    . ~/.ew_conf_orquestador_servicios
+fi
+
+#habitamos el orquestador de servicios de lava
+if [ -f ~/.ew_conf_constructor ]; then
+    . ~/.ew_conf_constructor
+else
+    ln -s -f $EW_CONF_SCRIPTS/ew_conf_constructor ~/.ew_conf_constructor
+    . ~/.ew_conf_constructor
+fi
+
+

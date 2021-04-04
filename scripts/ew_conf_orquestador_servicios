@@ -1,0 +1,85 @@
+#orquestadar los servicios de lava con nombres faciles de recordar
+
+function lava_orquestador_servicios(){
+    accion="$1"
+    servicio="$2"
+    comando_start="systemctl restart"
+    comando_stop="systemctl stop"
+    comando_status="systemctl status"
+
+    if [ ! -z "$accion" ]
+    then
+	case $accion in
+       	    parar)
+		$comando_stop $servicio
+		;;
+	    arrancar)
+		$comando_start $servicio;
+		;;  
+	    estado)
+		$comando_status $servicio;
+		;;
+	esac
+    else
+	echo "Accion $1 para el servicio $2 no valida"	
+    fi
+}
+#orquetar servicio apache
+export lava_apache_arrancar="lava_orquestador_servicios arrancar apache2";
+export lava_apache_parar="lava_orquestador_servicios parar apache2";
+export lava_apache_estado="lava_orquestador_servicios estado apache2";
+#orquetar servicio gunicorn
+export lava_gunicorn_arrancar="lava_orquestador_servicios arrancar lava-server-gunicorn";
+export lava_gunicorn_parar="lava_orquestador_servicios parar lava-server-gunicorn";
+lava_gunicorn_estado="lava_orquestador_servicios estado lava-server-gunicorn";
+#orquetar servicio publisher
+export lava_publisher_arrancar="lava_orquestador_servicios arrancar lava-publisher";
+export lava_publisher_parar="lava_orquestador_servicios parar lava-publisher";
+export lava_publisher_estado="lava_orquestador_servicios estado lava-publisher";
+#orquetar servicio scheduler
+export lava_scheduler_arrancar="lava_orquestador_servicios arrancar lava-scheduler";
+export lava_scheduler_parar="lava_orquestador_servicios parar lava-scheduler";
+export lava_scheduler_estado="lava_orquestador_servicios estado lava-scheduler";
+#orquetar servicio worker
+export lava_worker_arrancar="lava_orquestador_servicios arrancar lava-worker";
+export lava_worker_parar="lava_orquestador_servicios parar lava-worker";
+export lava_worker_estado="lava_orquestador_servicios estado lava-worker";
+function lava_exclavo_parar(){
+   $lava_worker_parar;
+}
+function lava_exclavo_arrancar(){
+    $lava_worker_arrancar
+}
+function lava_maestro_parar(){
+    $lava_scheduler_parar;
+    $lava_publisher_parar;
+    $lava_gunicorn_parar;
+}
+function lava_maestro_arrancar(){
+    $lava_gunicorn_arrancar;
+    $lava_publisher_arrancar;
+    $lava_scheduler_arrancar;
+}
+function lava_parar(){
+    if $LAVA_LOCAL
+    then
+	lava_exclavo_parar
+    fi
+    lava_maestro_parar
+}
+function lava_arrancar(){
+   
+    lava_maestro_arrancar
+    if $LAVA_LOCAL
+    then
+	lava_exclavo_arrancar
+    fi
+    
+}
+export -f lava_arrancar;
+export -f lava_parar;
+export -f lava_orquestador_servicios;
+export -f lava_maestro_arrancar;
+export -f lava_maestro_parar;
+export -f lava_exclavo_arrancar;
+export -f lava_exclavo_parar;
