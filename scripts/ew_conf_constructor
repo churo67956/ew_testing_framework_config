@@ -6,6 +6,7 @@ EW_CONFS=(
     $EW_CONF_LAVA_SCHEDULER
     $EW_CONF_LAVA_PUBLISHER
     $EW_CONF_LAVA_APACHE
+    $EW_CONF_LAVA_WORKER_TOKEN
 );
 EW_CONF_BACKUPS=(
     $EW_CONF_BACKUP_LAVA_WORKER
@@ -13,6 +14,7 @@ EW_CONF_BACKUPS=(
     $EW_CONF_BACKUP_LAVA_SCHEDULER
     $EW_CONF_BACKUP_LAVA_PUBLISHER
     $EW_CONF_BACKUP_LAVA_APACHE
+    $EW_CONF_BACKUP_LAVA_WORKER_TOKEN
 );
 LAVA_CONFS=(
     $LAVA_WORKER_CONF
@@ -20,6 +22,7 @@ LAVA_CONFS=(
     $LAVA_SCHEDULER_CONF
     $LAVA_PUBLISHER_CONF
     $LAVA_APACHE_CONF
+    $LAVA_WORKER_TOKEN
 );
 EW_CONF_CONSTRUCTOR_ACCIONES=(
     "cp -i"
@@ -59,7 +62,7 @@ function ew_conf_constructor_arrancar() {
 	do
 	    comando="${EW_CONF_CONSTRUCTOR_ACCIONES[count]}  ${origen[count1]} ${destino[count1]}";
 	    count1=$(( $count1 + 1 ))
-	    $comando;
+	    #$comando;
 	    echo "$comando"
 	done
 	count=$(( $count + 1 ))

@@ -5,6 +5,7 @@ export EW_CONF_LAVA_GUNICORN=$EW_CONF/lava-server-gunicorn
 export EW_CONF_LAVA_PUBLISHER=$EW_CONF/lava-publisher
 export EW_CONF_LAVA_SCHEDULER=$EW_CONF/lava-scheduler
 export EW_CONF_LAVA_APACHE=$EW_CONF/lava-server.conf
+export EW_CONF_LAVA_WORKER_TOKEN=$EW_CONF/token
 
 export EW_CONF_BACKUP=$EW_CONF_SCRIPTS/backup
 export EW_CONF_BACKUP_LAVA_WORKER=$EW_CONF_BACKUP/lava-worker
@@ -12,6 +13,7 @@ export EW_CONF_BACKUP_LAVA_GUNICORN=$EW_CONF_BACKUP/lava-server-gunicorn
 export EW_CONF_BACKUP_LAVA_PUBLISHER=$EW_CONF_BACKUP/lava-publisher
 export EW_CONF_BACKUP_LAVA_SCHEDULER=$EW_CONF_BACKUP/lava-scheduler
 export EW_CONF_BACKUP_LAVA_APACHE=$EW_CONF_BACKUP/lava-server.conf
+export EW_CONF_BACKUP_LAVA_WORKER_TOKEN=$EW_CONF_BACKUP/token
 
 export LAVA_WORKER_CONF=/etc/lava-dispatcher/lava-worker
 export LAVA_SERVER_ENV_CONF=/etc/lava-server/env.yaml
@@ -19,3 +21,4 @@ export LAVA_GUNICORN_CONF=/etc/lava-server/lava-server-gunicorn
 export LAVA_PUBLISHER_CONF=/etc/lava-server/lava-publisher
 export LAVA_SCHEDULER_CONF=/etc/lava-server/lava-scheduler
 export LAVA_APACHE_CONF=/etc/apache2/sites-enabled/lava-server.conf
+export LAVA_WORKER_TOKEN=/var/lib/lava/dispatcher/worker/token
